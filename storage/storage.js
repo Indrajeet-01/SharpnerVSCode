@@ -18,7 +18,12 @@ userForm.addEventListener('submit', function(event){
         time: time,
     }
 
-    const userDetailJson = JSON.stringify(userDetails)
+    let existingUsers = JSON.parse(localStorage.getItem('userDetails')) || []
+    existingUsers.push(userDetails)
 
-    localStorage.setItem('userDetail', userDetailJson)
+    const userDetailsJson = JSON.stringify(existingUsers)
+
+    localStorage.setItem('userDetails', userDetailsJson)
+
+    userForm.reset()
 })
