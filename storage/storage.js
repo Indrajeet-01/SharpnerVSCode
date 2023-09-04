@@ -1,4 +1,5 @@
 const userForm = document.getElementById('userForm')
+const userList = document.getElementById('userList')
 
 userForm.addEventListener('submit', function(event){
     event.preventDefault()
@@ -26,4 +27,22 @@ userForm.addEventListener('submit', function(event){
     localStorage.setItem('userDetails', userDetailsJson)
 
     userForm.reset()
+    displayUserList(existingUsers)
 })
+
+function displayUserList(users) {
+    
+    if(users.length>0){
+        const ul = document.createElement('ul')
+        users.forEach(user => {
+            const li = document.createElement('li')
+            li.textContent = `Name: ${user.name}, Email: ${user.email}, Phone: ${user.phone}, Date: ${user.date}, Time: ${user.time}`
+            ul.appendChild(li)
+        });
+        userList.appendChild(ul)
+    }
+    userList.style.backgroundColor = 'white'
+}
+
+const storedUsers = JSON.parse(localStorage.getItem('userDetails')) || []
+displayUserList(storedUsers)
