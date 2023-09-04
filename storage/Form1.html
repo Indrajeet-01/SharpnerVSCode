@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="form1.css">
+    
+
+</head>
+<body>
+    
+    <div id="box">
+        <form id="userForm">
+            <h2 id="center">Book a call</h2>
+            <p id="text" >book a call slot and our representative will call you </p>
+            <hr>
+
+            <label for="fname">name</label><br>
+            <input type="text" id="name"  name="fname" class="detail"><br><br>
+
+            <label for="lname">email</label><br>
+            <input type="text" id="email" name="email" class="detail">
+            <br><br>
+
+            <label for="phone">Phone</label><br>
+            <input type="number" id="phone" name="phone" class="detail">
+
+            <h4>Timer for call:</h4>
+            <div class="appoint">
+                <input type="date" id="date" value="2023-09-04" name="date"><br>
+            <input type="time" id="time" value="11:00">
+
+            </div>
+            <br>
+            
+            <button type="submit" class="btn">Get a Call</button>
+
+        </form>
+    </div>
+    <script src="storage.js">
+
+    </script>
+
+</body>
+</html>
