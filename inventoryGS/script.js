@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', ()=>{
+
     const createForm = document.getElementById('create-form')
     const inventoryTable = document.getElementById('inventory-table')
     const sellOneBtn = document.getElementById('sell-one');
@@ -100,4 +100,3 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     fetchInventory()
 
-})
