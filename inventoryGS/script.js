@@ -7,7 +7,7 @@
 
     // fetch and display items
     async function fetchInventory(){
-        const url = 'https://crudcrud.com/api/e03734d1d5784ddda6032fbe797a8fcb/inventoryData'
+        const url = 'https://crudcrud.com/api/cb48475a9400496e9b8dd2443f3270bb/inventoryData'
         try{
             const response = await axios.get(url)
             const data = response.data
@@ -17,9 +17,18 @@
                     <td>${item.name}</td>
                     <td>${item.description}</td>
                     <td>${item.quantity}</td>
-                    <td>₹${item.price.toFixed(2)}</td>
+                    <td>₹${item.price}</td>
                     <td>
-                        <button class="sell" data-id="${item.id}">Sell</button>
+                        <button onClick = sellItem('${item._id}',1) >sell 1</button>
+                    </td>
+                    <td>
+                        <button onClick = sellItem('${item._id}',2) >sell 2</button>
+                    </td>
+                    <td>
+                        <button onClick = sellItem('${item._id}',3) >sell 3</button>
+                    </td>
+                    <td>
+                        <button onClick = deleteItem('${item._id}')>Delete</button>
                     </td>
                 </tr>
                 `
@@ -27,11 +36,7 @@
 
             inventoryTable.querySelector('tbody').innerHTML = itemsDetail.join('')
 
-            // sell item button
-            const sellButtons = document.querySelector('.sell')
-            sellButtons.forEach((button) => {
-                button.addEventListener('click', sellItem)
-            })
+            
 
         } catch (error) {
             console.error('Error fetching inventory:', error);
@@ -39,18 +44,27 @@
         }
     }
 
-    // sell item
-    async function sellItem(e){
-        const itemId = e.target.dataset.id
-        const sellQuantity = e.target.dataset.quantity || 1
+    // Sell an item
+    async function sellItem(itemId, sellCount) {
+        const url = 'https://crudcrud.com/api/cb48475a9400496e9b8dd2443f3270bb/inventoryData'
 
         try {
-            await axios.put(url, {
-                quantity: sellQuantity
-            })
-            fetchInventory()
+        
+            const response = await axios.get(`${url}/${itemId}`);
+            const currentItem = response.data;
+
+            const updatedQuantity = currentItem.quantity - sellCount;
+
+            const updatedItem = {
+                ...currentItem,
+                quantity: updatedQuantity,
+            };
+
+            await axios.put(`${url}/${itemId}`, updatedItem);
+
+            fetchInventory();
         } catch (error) {
-            console.log('Erorr selling item' , error)
+            console.log('Error selling item', error);
         }
     }
 
@@ -68,35 +82,27 @@
             quantity: quantity,
             price: price
         }
-        const url = 'https://crudcrud.com/api/e03734d1d5784ddda6032fbe797a8fcb/inventoryData'
+        const url = 'https://crudcrud.com/api/cb48475a9400496e9b8dd2443f3270bb/inventoryData'
 
         try {
             await axios.post(url, newItem)
+            fetchInventory()
             createForm.reset()
         } catch (error) {
             console.log('error in adding item', error)
         }
     })
 
-      // Sell buttons
-    sellOneBtn.addEventListener('click', () => {
-        document.querySelectorAll('.sell').forEach((button) => {
-            button.dataset.quantity = 1;
-        });
-    });
+    async function deleteItem(itemId) {
+        const url = 'https://crudcrud.com/api/cb48475a9400496e9b8dd2443f3270bb/inventoryData'
+        try{
+            await axios.delete(`${url}/${itemId}`)
 
-    sellTwoBtn.addEventListener('click', () => {
-        document.querySelectorAll('.sell').forEach((button) => {
-            button.dataset.quantity = 2;
-        });
-    });
+        } catch(error){
+            console.log('error in delete user', error)
+        }
+    }
 
-    sellFiveBtn.addEventListener('click', () => {
-        document.querySelectorAll('.sell').forEach((button) => {
-            button.dataset.quantity = 5;
-        });
-    });
-
-
+    
     fetchInventory()
 
