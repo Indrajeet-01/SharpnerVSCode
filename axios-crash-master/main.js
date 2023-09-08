@@ -49,6 +49,18 @@ function getData() {
 
 // CUSTOM HEADERS
 function customHeaders() {
+  const config = {
+    headers: {
+      'Content-type': 'application/json',
+      Authorization: 'sometoken'
+    }
+  }
+  axios.post('https://reqres.in/api/login',{
+    'email': "eve.holt@reqres.in",
+    'password': "cityslicka"
+  },config)
+        .then(res => showOutput(res))
+        .then(err => console.log(err))
   console.log('Custom Headers');
 }
 
