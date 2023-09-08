@@ -70,6 +70,7 @@ async function editUser(name, email, phone, userId){
     const updatedUser = {
         name,email,phone
     }
+    deleteUser(userId)
 
     const url = 'https://crudcrud.com/api/be1747d53c8245c697e2e54e5dc09acc/appointmentData'
 
