@@ -1,0 +1,29 @@
+a {
+    color: black;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.topnav{
+   text-align: center;
+
+}
+#unique{
+    background-color: brown;
+}
+
+.form{
+    margin-left: 500px;
+    margin-top: 30px;
+    border: 2px solid brown;
+    width: 500px;
+    height: 300px;
+    text-align: center;
+}
+
+.nameid{
+    text-align: left;
+}
+input{
+    width: 98%;
+}

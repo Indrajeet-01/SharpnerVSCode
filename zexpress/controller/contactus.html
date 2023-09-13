@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="contactus.css">
+    <title>contact us page</title>
+
+   
+
+
+</head>
+<body>
+
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#news">Courses</a>
+        <a href="#contact">Hire with us</a>
+        <a href="#about">Pricing</a>
+        <a href="#register" id="unique">Register Now</a>
+      </div>
+
+    <div class="form">
+        <h3 id="heading">Book a call</h3>
+        <p>Book a slot and our representive will call you</p>
+        <hr>
+
+        <p class="nameid"">Name:</p>
+        <input type="text" name="name">
+
+        <p class="nameid"">Email:</p>
+        <input type="text" name="name">
+
+        <button type="submit" id="button">Submit</button>
+
+        <script>
+
+            var buttonid = document.getElementById('button');
+
+            buttonid.addEventListener('click', redirect);
+
+
+            function redirect()
+            {
+                window.location = 'http://localhost:3000/sucess.html';
+            }
+
+            
+
+
+        </script>
+
+
+
+
+    </div>
+
+
+    
+</body>
+</html>
