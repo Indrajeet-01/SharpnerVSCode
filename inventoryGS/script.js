@@ -1,13 +1,11 @@
 
     const createForm = document.getElementById('create-form')
     const inventoryTable = document.getElementById('inventory-table')
-    const sellOneBtn = document.getElementById('sell-one');
-    const sellTwoBtn = document.getElementById('sell-two');
-    const sellFiveBtn = document.getElementById('sell-five');
+    
 
     // fetch and display items
     async function fetchInventory(){
-        const url = 'https://crudcrud.com/api/cb48475a9400496e9b8dd2443f3270bb/inventoryData'
+        const url = 'https://crudcrud.com/api/48063a808b5a43aeac9293f720a21fac/inventoryData'
         try{
             const response = await axios.get(url)
             const data = response.data
@@ -19,16 +17,16 @@
                     <td>${item.quantity}</td>
                     <td>₹${item.price}</td>
                     <td>
-                        <button onClick = sellItem('${item._id}',1) >sell 1</button>
+                        <button class="sell" onClick = sellItem('${item._id}',1) >sell 1</button>
                     </td>
                     <td>
-                        <button onClick = sellItem('${item._id}',2) >sell 2</button>
+                        <button class="sell" onClick = sellItem('${item._id}',2) >sell 2</button>
                     </td>
                     <td>
-                        <button onClick = sellItem('${item._id}',3) >sell 3</button>
+                        <button class="sell" onClick = sellItem('${item._id}',3) >sell 3</button>
                     </td>
                     <td>
-                        <button onClick = deleteItem('${item._id}')>Delete</button>
+                        <button class="dltBtn" onClick = deleteItem('${item._id}')>Delete</button>
                     </td>
                 </tr>
                 `
@@ -46,7 +44,7 @@
 
     // Sell an item
     async function sellItem(itemId, sellCount) {
-        const url = 'https://crudcrud.com/api/cb48475a9400496e9b8dd2443f3270bb/inventoryData'
+        const url = 'https://crudcrud.com/api/48063a808b5a43aeac9293f720a21fac/inventoryData'
 
         try {
         
@@ -82,7 +80,7 @@
             quantity: quantity,
             price: price
         }
-        const url = 'https://crudcrud.com/api/cb48475a9400496e9b8dd2443f3270bb/inventoryData'
+        const url = 'https://crudcrud.com/api/48063a808b5a43aeac9293f720a21fac/inventoryData'
 
         try {
             await axios.post(url, newItem)
@@ -93,10 +91,12 @@
         }
     })
 
+    // delete item
     async function deleteItem(itemId) {
-        const url = 'https://crudcrud.com/api/cb48475a9400496e9b8dd2443f3270bb/inventoryData'
+        const url = 'https://crudcrud.com/api/48063a808b5a43aeac9293f720a21fac/inventoryData'
         try{
             await axios.delete(`${url}/${itemId}`)
+            fetchInventory()
 
         } catch(error){
             console.log('error in delete user', error)

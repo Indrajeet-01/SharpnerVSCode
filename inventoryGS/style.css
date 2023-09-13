@@ -54,7 +54,7 @@ button.sell {
 }
 
 button.sell {
-  background-color: #dc3545;
+  
 }
 
 /* Inventory Table */
@@ -97,4 +97,9 @@ table th {
     padding: 5px 10px;
     font-size: 14px;
   }
+}
+
+button.dltBtn {
+  color: white;
+  background-color: #dc3545;
 }
