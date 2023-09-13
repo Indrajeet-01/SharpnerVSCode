@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat app</title>
+</head>
+<body>
+
+    <h5 id="showmessage">No chats exists</h5>
+
+    <form method="post" action="/">
+
+    <input type="text" id="chatmessage" name="message">
+    <button type="submit" id="button">send</button>
+
+    </form>
+
+    <script>
+
+        var buttonid=document.getElementById('button');
+        var showmessageid = document.getElementById('showmessage');
+        buttonid.addEventListener('click',save);
+
+        //save chatmessages to text file;
+        function save()
+        {
+            
+            // Retrieve the data from localStorage.
+            const key = 'username';
+            const username = localStorage.getItem(key);
+
+            //test code from here;
+
+            var chatmessageid = document.getElementById("chatmessage");
+            var chatmessagevalue = chatmessageid.value;
+
+            //console.log(addelement)
+            var tosend = username+":"+chatmessagevalue;
+            console.log(username+":"+chatmessagevalue);
+
+            chatmessageid.value = tosend;
+                   
+        }
+
+        
+
+
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat app</title>
+</head>
+<body>
+
+    <input type="text" id="username">
+    <button type="submit" id="button">login</button>
+
+    
+
+    <script>
+
+        
+        var buttonid=document.getElementById('button');
+
+        buttonid.addEventListener('click',save);
+
+        function save()
+        {
+            var inputval=document.getElementById('username').value;
+            console.log(inputval);
+
+            //saving data to localstorage;
+
+            // Create a key-value pair to store in localStorage.
+            const key = 'username';
+            const value = inputval;
+
+            // Save the data to localStorage.
+            localStorage.setItem(key, value);
+
+            // Redirect to a new URL
+            window.location.href = "http://localhost:3000/";
+
+            
+
+
+        }
+
+
+
+
+
+    </script>
+
+    
+</body>
+</html>
