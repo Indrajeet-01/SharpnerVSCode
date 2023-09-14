@@ -2,10 +2,11 @@ import express from 'express'
 import { db } from './db.js'
 import bodyParser from 'body-parser'
 import itemRoutes from './routes/productRoute.js'
-
+import cors from 'cors'
 
 const app = express()
 
+app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 

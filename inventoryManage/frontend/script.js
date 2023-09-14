@@ -2,7 +2,7 @@
     const createForm = document.getElementById('create-form')
     const inventoryTable = document.getElementById('inventory-table')
     
-    const url = 'http://localhost:4000'
+    const url = 'http://localhost:4000/items'
 
     // fetch and display items
     async function fetchInventory(){
@@ -18,16 +18,16 @@
                     <td>${item.quantity}</td>
                     <td>₹${item.price}</td>
                     <td>
-                        <button class="sell" onClick = sellItem('${item._id}',1) >sell 1</button>
+                        <button class="sell" onClick = sellItem('${item.id}',1) >sell 1</button>
                     </td>
                     <td>
-                        <button class="sell" onClick = sellItem('${item._id}',2) >sell 2</button>
+                        <button class="sell" onClick = sellItem('${item.id}',2) >sell 2</button>
                     </td>
                     <td>
-                        <button class="sell" onClick = sellItem('${item._id}',3) >sell 3</button>
+                        <button class="sell" onClick = sellItem('${item.id}',3) >sell 3</button>
                     </td>
                     <td>
-                        <button class="dltBtn" onClick = deleteItem('${item._id}')>Delete</button>
+                        <button class="dltBtn" onClick = deleteItem('${item.id}')>Delete</button>
                     </td>
                 </tr>
                 `
