@@ -45,11 +45,14 @@
 
     // Sell an item
     async function sellItem(itemId, sellCount) {
+        console.log(`sell ${sellCount} of ${itemId}`)
         
         try {
         
             const response = await axios.get(`${url}/${itemId}`);
             const currentItem = response.data;
+
+            console.log(currentItem)
 
             const updatedQuantity = currentItem.quantity - sellCount;
 

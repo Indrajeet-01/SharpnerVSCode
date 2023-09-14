@@ -19,7 +19,7 @@ export const addItem = (req,res) => {
 
 
 // display all items
-export const displayItem = (req,res) => {
+export const displayItems = (req,res) => {
     const q = "SELECT * FROM inventory"
 
     db.query(q, (err,results) => {
@@ -62,5 +62,26 @@ export const updateItem = (req,res) => {
         } else {
             res.status(200).send('Item updated successfully.');
         }
+    })
+}
+
+export const specificItem = (req,res) => {
+    const itemId = req.params.id
+
+    const q = "SELECT * FROM inventory WHERE `id` = ?"
+
+    db.query(q, [itemId], (err, results) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error retrieving the item.');
+        } else {
+            // Check if a matching item was found
+            if (results.length === 0) {
+                res.status(404).send('Item not found.');
+            } else {
+                res.json(results[0]); 
+            }
+        }
+
     })
 }
