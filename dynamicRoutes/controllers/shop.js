@@ -18,6 +18,15 @@ exports.getProduct = (req,res) => {
   res.redirect('/')
 }
 
+exports.getEditProduct = (req,res) => {
+  const editMode = req.query.edit
+  res.render('admin/edit-product', {
+    pageTitle: 'Add product',
+    path: '/admin/add-product',
+    editing: true
+  })
+}
+
 exports.getIndex = (req, res, next) => {
   Product.fetchAll(products => {
     res.render('shop/index', {
