@@ -25,7 +25,7 @@ h2 {
 
 /* Create Item Form */
 form {
-  background-color: #fff;
+  background-color: #e89898;
   border: 1px solid #ddd;
   padding: 20px;
   margin-bottom: 20px;
@@ -39,13 +39,15 @@ label {
 input[type="text"],
 input[type="number"],
 textarea {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   margin-bottom: 10px;
+  
+  background-color: #d6ec9a;
 }
 
-button[type="submit"],
-button.sell {
+button[type="submit"]
+ {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -61,6 +63,7 @@ table {
   border-collapse: collapse;
 }
 
+
 table th,
 table td {
   border: 1px solid #ddd;
@@ -69,7 +72,8 @@ table td {
 }
 
 table th {
-  background-color: #f0f0f0;
+  background-color:black;
+  color: white;
 }
 
 
