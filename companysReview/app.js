@@ -10,7 +10,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-app.use("/items",itemRoutes)
+app.use("/company",itemRoutes)
 
 
 db.connect((err) => {
@@ -24,5 +24,5 @@ db.connect((err) => {
 
 
 app.listen(4000, () => {
-    console.log("connected to 4000")
+    console.log("server is connected to 4000")
 })
