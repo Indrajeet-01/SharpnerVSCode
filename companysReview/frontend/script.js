@@ -1,11 +1,11 @@
 
     const createForm = document.getElementById('create-form')
-    const inventoryTable = document.getElementById('inventory-table')
+    const dataTable = document.getElementById('inventory-table')
     const searchItem = document.getElementById('search-item')
     
     const url = 'http://localhost:4000/company'
 
-    // fetch and display items
+    // fetch and display all reviews
     async function fetchData(){
         
         try{
@@ -18,14 +18,11 @@
                     <td>${item.pros}</td>
                     <td>${item.cons}</td>
                     <td>${item.rating}</td>
-                    
                 </tr>
                 `
             )
 
-            inventoryTable.querySelector('tbody').innerHTML = itemsDetail.join('')
-
-            
+            dataTable.querySelector('tbody').innerHTML = itemsDetail.join('')
 
         } catch (error) {
             console.error('Error fetching inventory:', error);
@@ -33,8 +30,7 @@
         }
     }
 
-
-    // add new item
+    // add review
     createForm.addEventListener('submit', async(e) => {
         e.preventDefault()
         const name = document.getElementById('name').value
@@ -58,13 +54,12 @@
         }
     })
 
-    // Function to search for items by name
+// Function to search for company by name
 async function searchItems() {
     const searchInput = document.getElementById('searchInput').value;
 
     console.log(searchInput)
     
-
     try {
         const response = await axios.get(`${url}/search/${searchInput}`);
         const items = response.data;
@@ -77,8 +72,7 @@ async function searchItems() {
     }
 }
 
-
-    // Function to display search results
+// Function to display search results
 function displaySearchResults(items) {
     const searchResultsContainer = document.getElementById('searchResults');
     searchResultsContainer.innerHTML = '';
@@ -108,11 +102,8 @@ function displaySearchResults(items) {
                 <td>${item.cons}</td>
                 <td>${item.rating}</td>
             </tr>
-
         </tbody>
     </table>`
-
-        
         searchResultsContainer.appendChild(itemDiv);
     });
 }

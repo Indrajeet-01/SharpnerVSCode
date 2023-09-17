@@ -1,6 +1,6 @@
 import  {db} from "../db.js"
 
-// add new item
+// add review
 export const addItem = (req,res) => {
     const {name, pros, cons, rating} = req.body
 
@@ -18,7 +18,7 @@ export const addItem = (req,res) => {
 }
 
 
-// display all items
+// display all reviews
 export const displayItems = (req,res) => {
     const q = "SELECT * FROM companys_review"
 
@@ -31,8 +31,7 @@ export const displayItems = (req,res) => {
     })
 }
 
-
-
+// search review by company's name
 export const searchItem = (req,res) => {
     const searchName = req.params.name;
 
