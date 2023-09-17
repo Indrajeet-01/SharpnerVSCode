@@ -33,33 +33,10 @@ export const displayItems = (req,res) => {
 
 
 
-export const specificItem = (req,res) => {
-    const itemId = req.params.id
-
-    const q = "SELECT * FROM companys_review WHERE `id` = ?"
-
-    db.query(q, [itemId], (err, results) => {
-        if (err) {
-            console.error(err);
-            res.status(500).send('Error retrieving the item.');
-        } else {
-            // Check if a matching item was found
-            if (results.length === 0) {
-                res.status(404).send('Item not found.');
-            } else {
-                res.json(results[0]); 
-            }
-        }
-
-    })
-}
-
 export const searchItem = (req,res) => {
-    const searchName = req.query.name;
+    const searchName = req.params.name;
 
-    console.log(searchName)
-
-    db.query('SELECT * FROM companys_review WHERE name LIKE ?', [`%${searchName}%`], (err, results) => {
+    db.query('SELECT * FROM companys_review WHERE `name` = ?', [searchName], (err, results) => {
         if (err) {
             console.error(err);
             res.status(500).send('Error searching for items.');

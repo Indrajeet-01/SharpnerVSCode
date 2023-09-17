@@ -40,7 +40,7 @@
         const name = document.getElementById('name').value
         const pros = document.getElementById('pros').value
         const cons = document.getElementById('cons').value
-        const rating = parseFloat(document.getElementById('rating').value)
+        const rating = document.getElementById('rating').value
 
         const newItem = {
             name: name,
@@ -66,14 +66,12 @@ async function searchItems() {
     
 
     try {
-        const response = await axios.get(`${url}/search?name=${searchInput}`);
+        const response = await axios.get(`${url}/search/${searchInput}`);
         const items = response.data;
-
-        console.log(`${url}/search?name=${searchInput}`)
-        console.log(items)
 
       // Display search results
         displaySearchResults(items);
+        
     } catch (error) {
         console.error('Error searching for items:', error);
     }
@@ -91,11 +89,30 @@ function displaySearchResults(items) {
     }
 
     items.forEach((item) => {
-      // Create a div for each item (you can customize the display format)
+        
         const itemDiv = document.createElement('div');
-        itemDiv.innerHTML = `Name: ${item.name}, Pros: ${item.pros}, Cons: ${item.cons}, Rating: $${item.rating.toFixed(2)}`;
+        itemDiv.innerHTML = 
+        `<table id="inventory-table">
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>Pros. </th>
+                <th>Cons. </th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.pros}</td>
+                <td>${item.cons}</td>
+                <td>${item.rating}</td>
+            </tr>
 
-      // Append the item div to the search results container
+        </tbody>
+    </table>`
+
+        
         searchResultsContainer.appendChild(itemDiv);
     });
 }
